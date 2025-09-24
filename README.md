@@ -12,10 +12,10 @@ GraphNotes is a simple graphical note-taking application with drawing capabiliti
 
 ## Installation
 
-GraphNotes requires Python 3.8 or higher. The application dependencies are managed using Poetry. To set up the project, ensure Poetry is installed and run:
-
+GraphNotes requires Python 3.8 or higher.  To set up the project, run:
+    
 ```bash
-poetry install
+pip install -e .
 ```
 
 The command will install all necessary dependencies specified in the `pyproject.toml` file.
@@ -23,12 +23,6 @@ The command will install all necessary dependencies specified in the `pyproject.
 ## Usage
 
 GraphNotes can be launched via the command line by running:
-
-```bash
-poetry run graphnotes
-```
-
-Alternatively, if an executable script is created during setup, simply run:
 
 ```bash
 graphnotes
