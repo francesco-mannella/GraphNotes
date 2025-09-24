@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "graphnotes"
+version = "0.1.0"
+description = "A graphical note-taking application with drawing capabilities"
+authors = ["Francesco Mannella <francesco.mannella@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Pillow = "^8.0.0"  # Pillow is used for image processing
+# Add widgets and plugins if any
+# tkinter is part of the Python standard library, no need to specify
+configparser = "^5.0.0"  # For handling configuration files
+# threading, datetime, os, glob are part of the standard library
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool]
+# Add any custom scripts or tool-specific configurations here
+
+[tool.poetry.scripts]
+graphnotes = "graphnotes:main"  # If you want to create an executable script
