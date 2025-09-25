@@ -31,6 +31,7 @@ graphnotes
 Upon launching, you will see a semitransparent drawing window. Here are some controls:
 
 - **Left Mouse Button**: Click and drag to draw.
+- **Left Mouse Button + Right Mouse Button**: Click and drag to erase.
 - **Save Button**: Save your current drawing with a timestamp.
 - **Clear Button**: Clear the current drawing canvas.
 - **Exit Button**: Close the application.
@@ -58,7 +59,8 @@ Additional standard libraries include `threading`, `datetime`, `os`, and `glob`.
 
 ## License
 
-GraphNotes is created by Francesco Mannella, and it's provided under the [your chosen license here].
+GraphNotes is created by Francesco Mannella, and it's provided under the [MIT License](https://opensource.org/licenses/MIT).
+
 
 ---
 
