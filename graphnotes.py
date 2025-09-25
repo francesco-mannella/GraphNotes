@@ -34,8 +34,11 @@ class NoteApp:
         )
         self.draw = ImageDraw.Draw(self.image, "RGBA")
         self.last_x = self.last_y = None
+        self.space_pressed = False
         self.canvas.bind("<B1-Motion>", self.draw_note)
         self.canvas.bind("<ButtonRelease-1>", self.reset_last_coords)
+        self.canvas.bind("<ButtonPress-3>", self.on_start_erase)
+        self.canvas.bind("<ButtonRelease-3>", self.on_end_erase)
         self.control_frame = tk.Frame(root, bg=self.control_bg)
         self.control_frame.pack(side=tk.BOTTOM, fill=tk.X)
         self.create_buttons()
@@ -104,15 +107,18 @@ class NoteApp:
             ).pack(side=side, padx=1, pady=1)
 
     def draw_note(self, event):
-
+        print(self.space_pressed)
         x, y = event.x * self.ratio, event.y * self.ratio
-        if self.last_x is not None and self.last_y is not None:
-            self.draw.line(
-                [self.last_x, self.last_y, x, y],
-                fill=self.line_color,
-                width=self.line_width,
-                joint="curve",
-            )
+        if self.space_pressed:
+            self.erase(x, y)
+        else:
+            if self.last_x is not None and self.last_y is not None:
+                self.draw.line(
+                    [self.last_x, self.last_y, x, y],
+                    fill=self.line_color,
+                    width=self.line_width,
+                    joint="curve",
+                )
         self.last_x, self.last_y = x, y
         self.update_canvas()
 
@@ -120,12 +126,16 @@ class NoteApp:
             self.note_on = True
             self.timer = threading.Timer(10, self.timer_callback).start()
 
+    def erase(self, x, y):
+        erase_radius = self.line_width * 10
+        left_up = (x - erase_radius, y - erase_radius)
+        right_down = (x + erase_radius, y + erase_radius)
+        self.draw.ellipse([left_up, right_down], fill=self.bg_color, outline=None)
+
     def timer_callback(self):
         self.save_note()
         self.note_on = False
 
-    def reset_last_coords(self, event):
-        self.last_x = self.last_y = None
 
     def load_last_note(self):
         pattern = os.path.join(self.notes_dir, "note_*.png")
@@ -146,7 +156,6 @@ class NoteApp:
             return False
 
     def save_note(self):
-
         try:
             img = self.image.resize(
                 (self.width * self.ratio, self.height * self.ratio),
@@ -176,6 +185,18 @@ class NoteApp:
         )
         self.tk_img = ImageTk.PhotoImage(img)
         self.canvas.create_image(0, 0, anchor=tk.NW, image=self.tk_img)
+    
+    def reset_last_coords(self, event):
+        print("reset")
+        self.last_x = self.last_y = None
+
+    def on_start_erase(self, event):
+        print("pressed")
+        self.space_pressed = True
+
+    def on_end_erase(self, event):
+        print("released")
+        self.space_pressed = False
 
 
 def main():
@@ -186,3 +207,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
