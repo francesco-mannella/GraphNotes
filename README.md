@@ -1,6 +1,6 @@
-# GraphNotes
+# HandNotes
 
-GraphNotes is a simple graphical note-taking application with drawing capabilities. It provides a transparent window for sketching quick notes or diagrams using basic drawing tools. This application is developed with Python and utilizes libraries such as Pillow for image support and tkinter for the graphical user interface.
+HandNotes is a simple graphical note-taking application with drawing capabilities. It provides a transparent window for sketching quick notes or diagrams using basic drawing tools. This application is developed with Python and utilizes libraries such as Pillow for image support and tkinter for the graphical user interface.
 
 ## Features
 
@@ -12,7 +12,7 @@ GraphNotes is a simple graphical note-taking application with drawing capabiliti
 
 ## Installation
 
-GraphNotes requires Python 3.8 or higher.  To set up the project, run:
+HandNotes requires Python 3.8 or higher.  To set up the project, run:
     
 ```bash
 pip install -e .
@@ -22,10 +22,10 @@ The command will install all necessary dependencies specified in the `pyproject.
 
 ## Usage
 
-GraphNotes can be launched via the command line by running:
+HandNotes can be launched via the command line by running:
 
 ```bash
-graphnotes
+handnotes
 ```
 
 Upon launching, you will see a semitransparent drawing window. Here are some controls:
@@ -38,7 +38,7 @@ Upon launching, you will see a semitransparent drawing window. Here are some con
 
 ## Configuration
 
-GraphNotes uses a configuration file (`graphnotes.conf`) to manage user settings. The file is located in the `.config/graphnotes` directory within your home folder. You can adjust the following parameters:
+HandNotes uses a configuration file (`handnotes.conf`) to manage user settings. The file is located in the `.config/handnotes` directory within your home folder. You can adjust the following parameters:
 
 - `ratio`: The ratio for scaling the canvas.
 - `width` and `height`: Dimensions of the window.
@@ -49,7 +49,7 @@ GraphNotes uses a configuration file (`graphnotes.conf`) to manage user settings
 
 ## Development
 
-GraphNotes is written in Python, using the following main libraries:
+HandNotes is written in Python, using the following main libraries:
 
 - **tkinter**: Standard library for the GUI interface.
 - **Pillow**: Added for advanced image handling features.
@@ -59,7 +59,7 @@ Additional standard libraries include `threading`, `datetime`, `os`, and `glob`.
 
 ## License
 
-GraphNotes is created by Francesco Mannella, and it's provided under the [MIT License](https://opensource.org/licenses/MIT).
+HandNotes is created by Francesco Mannella, and it's provided under the [MIT License](https://opensource.org/licenses/MIT).
 
 
 ---

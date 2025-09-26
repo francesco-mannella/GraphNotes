@@ -49,10 +49,10 @@ class NoteApp:
 
     def load_params(self):
         config_dir = os.path.join(
-            os.environ.get("HOME", ""), ".config", "graphnotes"
+            os.environ.get("HOME", ""), ".config", "handnotes"
         )
         os.makedirs(config_dir, exist_ok=True)
-        config_path = os.path.join(config_dir, "graphnotes.conf")
+        config_path = os.path.join(config_dir, "handnotes.conf")
         config = configparser.ConfigParser()
         defaults = {
             "ratio": "3",

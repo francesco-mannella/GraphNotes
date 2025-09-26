@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "graphnotes"
+name = "handnotes"
 version = "0.1.0"
 description = "A graphical note-taking application with drawing capabilities"
 authors = ["Francesco Mannella <francesco.mannella@gmail.com>"]
@@ -20,4 +20,4 @@ build-backend = "poetry.core.masonry.api"
 # Add any custom scripts or tool-specific configurations here
 
 [tool.poetry.scripts]
-graphnotes = "graphnotes:main"  # If you want to create an executable script
+handnotes = "handnotes:main"  # If you want to create an executable script
