@@ -10,6 +10,10 @@ from datetime import datetime
 from PIL import Image, ImageDraw, ImageTk
 
 
+def clip(x, mn, mx):
+    return max(mn, min(mx, x))
+
+
 class NoteApp:
     def __init__(self, root):
         self.root = root
@@ -56,6 +60,8 @@ class NoteApp:
         config = configparser.ConfigParser()
         defaults = {
             "ratio": "3",
+            "x": "0",
+            "y": "0",
             "width": "600",
             "height": "400",
             "bg_color": "#dd6",
@@ -82,8 +88,10 @@ class NoteApp:
         self.button_fg = params.get("button_fg", defaults["button_fg"])
         self.line_color = params.get("line_color", defaults["line_color"])
         self.line_width = int(params.get("line_width", defaults["line_width"]))
-        self.x = self.root.winfo_screenwidth() - self.width
-        self.y = self.root.winfo_screenheight() - self.height
+        self.x = int(params.get("x", defaults["x"]))
+        self.y = int(params.get("y", defaults["y"]))
+        self.x = clip(self.x, 0, self.root.winfo_screenwidth() - self.width)
+        self.y = clip(self.y, 0, self.root.winfo_screenheight() - self.height)
         self.notes_dir = config_dir
 
     def create_buttons(self):
